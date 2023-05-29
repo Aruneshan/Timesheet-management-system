@@ -1,0 +1,74 @@
+﻿@model TimeMate.Models.LeaveRequest
+
+@{
+    ViewData["Title"] = "Details";
+}
+@{
+
+    if (User.IsInRole("Admin"))
+    {
+        Layout = "~/Views/Layouts/_AdminLayout.cshtml";
+    }
+    else if (User.IsInRole("Employee"))
+    {
+        Layout = "~/Views/Layouts/_EmployeeLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Layouts/_ManagerLayout.cshtml";
+    }
+}
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">LeaveRequest</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Employee)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Employee.Id)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.StartDate)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.StartDate)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.EndDate)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.EndDate)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Reason)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Reason)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Status)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.CompensatoryDate)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.CompensatoryDate)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.CancellationReason)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.CancellationReason)
+            </dd>
+        </dl>
+    </div>
+    <div class="card-footer">
+        <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>

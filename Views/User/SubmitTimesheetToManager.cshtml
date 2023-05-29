@@ -1,0 +1,39 @@
+﻿@using TimeMate.ViewModels;
+@model IEnumerable<SubmitTimesheetViewModel>
+
+@{
+    ViewData["Title"] = "SubmitTimesheetToManager";
+    Layout = "~/Views/Layouts/_EmployeeLayout.cshtml";
+}
+@using (Html.BeginForm("SubmitTimesheetToManager", "User", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Task</th>
+                <th>Task Type</th>
+                <th>Hours Spent</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Task)</td>
+                    <td>@Html.DisplayFor(modelItem => item.TaskType)</td>
+                    <td>@Html.DisplayFor(modelItem => item.HoursSpent)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                    <td>@Html.HiddenFor(modelItem => item.TimeSheetId)</td>
+                    <td>@Html.HiddenFor(modelItem => item.Status)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <input type="submit" value="Submit Timesheet" class="btn btn-primary" />
+}

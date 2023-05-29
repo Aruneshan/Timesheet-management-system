@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Message>
+
+@foreach (var message in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => message.RecipientEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => message.Subject)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => message.SentDate)
+        </td>
+        <td>
+            @if (message.IsRead)
+            {
+                <span class="text-muted">Yes</span>
+            }
+            else
+            {
+                <span class="text-warning">No</span>
+            }
+        </td>
+        <td>
+            @if (message.IsArchived)
+            {
+                <span class="text-muted">Yes</span>
+            }
+            else
+            {
+                <span class="text-warning">No</span>
+            }
+        </td>
+        <td>
+            <a asp-action="MessageDetails" asp-route-id="@message.Id">Details</a> |
+            <a asp-action="MessageEdit" asp-route-id="@message.Id">Edit</a> |
+            <a asp-action="MessageDelete" asp-route-id="@message.Id">Delete</a>
+        </td>
+    </tr>
+}

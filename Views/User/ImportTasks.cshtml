@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Import Tasks</title>
+</head>
+<body>
+    <h2>Import Tasks</h2>
+    @using (Html.BeginForm("ImportTasks", "Manager", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <p>
+            <input type="file" name="importFile" />
+        </p>
+        <p>
+            <button type="submit">Import</button>
+        </p>
+    }
+</body>
+</html>
+

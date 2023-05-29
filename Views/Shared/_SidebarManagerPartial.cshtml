@@ -1,0 +1,90 @@
+
+<ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar">
+
+
+    
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" asp-controller="Home" asp-action="Index">
+        <i class="fa fa-home fa-fw"></i>
+        <div class="sidebar-brand-text mx-2" style="font-size:smaller">@ViewBag.Name</div>
+
+    </a>
+
+
+    <hr class="sidebar-divider my-0">
+
+    
+    <li class="nav-item active">
+        <a class="nav-link" asp-controller="User" asp-action="Workspace">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+        </a>
+    </li>
+
+
+    <hr class="sidebar-divider">
+
+
+    <div class="sidebar-heading">
+        Interface
+    </div>
+
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-cog"></i>
+            <span>Workspace</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navDropdown">
+            <a class="dropdown-item" asp-action="CreateWeekSetting" asp-route-id="@ViewBag.WorkspaceId">Add Week Setting</a>
+            <a class="dropdown-item" asp-action="WeekSetting" asp-route-id="@ViewBag.WorkspaceId">Week Setting</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" asp-action="Projects" asp-route-id="@ViewBag.WorkspaceId">Project List</a>
+            <a class="dropdown-item" asp-action="CreateProject" asp-route-id="@ViewBag.WorkspaceId">Add Project</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" asp-action="WorkspaceTasks" asp-route-id="@ViewBag.WorkspaceId">Task List</a>
+            <a class="dropdown-item" asp-action="CreateTask" asp-route-id="@ViewBag.WorkspaceId">Add Task</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" asp-controller="Leave" asp-action="Index">Leave Requests</a> <!-- Added Leave Requests -->
+        </div>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="User" asp-action="ChangeProjectRequestsPm">
+            <i class="fa fa-user-cog"></i>
+            <span>Requests</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="User" asp-action="MessageCreate">
+            <i class="fa fa-solid fa-phone"></i>
+            <span>Communication</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="User" asp-action="MessageIndex">
+            <i class="fa fa-solid fa-phone"></i>
+            <span>Messages</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="Goal" asp-action="Create">
+            <i class="fa fa-solid fa-bullseye"></i>
+            <span>Goal</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="User" asp-action="PermissionIndex">
+            <i class="fa fa-solid fa-bullseye"></i>
+            <span>Permissions</span>
+        </a>
+    </li>
+
+
+    <hr class="sidebar-divider d-none d-md-block">
+
+
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+
+</ul>

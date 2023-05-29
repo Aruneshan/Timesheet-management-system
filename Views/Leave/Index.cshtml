@@ -1,0 +1,70 @@
+﻿@model IEnumerable<TimeMate.Models.LeaveRequest>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@{
+
+    if (User.IsInRole("Admin"))
+    {
+        Layout = "~/Views/Layouts/_AdminLayout.cshtml";
+    }
+    else if (User.IsInRole("Employee"))
+    {
+        Layout = "~/Views/Layouts/_EmployeeLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Layouts/_ManagerLayout.cshtml";
+    }
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Employee Name</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Reason</th>
+            <th>Status</th>
+            <th>Manager Approval</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Employee.FirstName</td>
+                <td>@Html.DisplayFor(modelItem => item.StartDate)</td>
+                <td>@Html.DisplayFor(modelItem => item.EndDate)</td>
+                <td>@Html.DisplayFor(modelItem => item.Reason)</td>
+                <td>
+                    @if (item.ManagerApproval == LeaveStatus.Pending)
+                    {
+                        <span>Pending</span>
+                    }
+                    else if (item.ManagerApproval == LeaveStatus.Approved)
+                    {
+                        <span>Accepted</span>
+                    }
+                    else if (item.ManagerApproval == LeaveStatus.Rejected)
+                    {
+                        <span>Rejected</span>
+                    }
+                </td>
+                <td>@Html.DisplayFor(modelItem => item.ManagerApproval)</td>
+                <td>
+                    @if (User.IsInRole("Manager") && item.ManagerApproval == LeaveStatus.Pending)
+                    {
+                        <a asp-action="Approve" asp-route-id="@item.Id">Approve</a>
+                        <a asp-action="Reject" asp-route-id="@item.Id">Reject</a>
+                    }
+                    else
+                    {
+                        <span class="text-muted">N/A</span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

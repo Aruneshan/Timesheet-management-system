@@ -1,0 +1,52 @@
+
+<ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar">
+
+
+    
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" asp-controller="Home" asp-action="Index">
+        <i class="fa fa-home fa-fw"></i>
+        <div class="sidebar-brand-text mx-2" style="font-size:smaller">@ViewBag.Name</div>
+
+    </a>
+
+
+    <hr class="sidebar-divider my-0">
+
+    
+    <li class="nav-item active">
+        <a class="nav-link" asp-controller="User" asp-action="AdminDashboard">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+        </a>
+    </li>
+
+
+    <hr class="sidebar-divider">
+
+
+    <div class="sidebar-heading">
+        Interface
+    </div>
+
+    <li class="nav-item">
+        <a class="nav-link" asp-action="CreateWorkSpace" asp-controller="User">
+
+            <i class="fa fa-cog"></i>
+            <span> Create WorkSpace</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" asp-action="AdminWorkSpace" asp-controller="User">
+
+            <i class="fa fa-cog"></i>
+            <span> WorkSpace</span>
+        </a>
+    </li>
+    <hr class="sidebar-divider d-none d-md-block"/>
+
+
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+
+</ul>

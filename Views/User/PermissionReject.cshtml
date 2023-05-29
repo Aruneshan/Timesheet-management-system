@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Permission Rejected";
+}
+@{
+
+    if (User.IsInRole("Admin"))
+    {
+        Layout = "~/Views/Layouts/_AdminLayout.cshtml";
+    }
+    else if (User.IsInRole("Employee"))
+    {
+        Layout = "~/Views/Layouts/_EmployeeLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Layouts/_ManagerLayout.cshtml";
+    }
+}
+<h1>Permission Rejected</h1>
+<form method="post" asp-controller="Manager" asp-action="PermissionReject">
+<p>The permission has been rejected.</p>
+
+<p><a asp-action="PermissionIndex">Return to permissions list</a></p>
+</form>

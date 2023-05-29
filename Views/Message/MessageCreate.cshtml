@@ -1,0 +1,35 @@
+﻿@model Message
+@if (User.IsInRole("Admin"))
+{
+    Layout = "~/Views/Shared/_SidebarAdminPartial.cshtml";
+}
+else if (User.IsInRole("Manager"))
+{
+    Layout = "~/Views/Shared/_SidebarManagerPartial.cshtml";
+}
+else if (User.IsInRole("Employee"))
+{
+    Layout = "~/Views/Shared/_SidebarEmployeePartial.cshtml";
+}
+
+<form asp-action="MessageCreate">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="RecipientEmail" class="control-label"></label>
+        <input asp-for="RecipientEmail" class="form-control" />
+        <span asp-validation-for="RecipientEmail" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Subject" class="control-label"></label>
+        <input asp-for="Subject" class="form-control" />
+        <span asp-validation-for="Subject" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Body" class="control-label"></label>
+        <textarea asp-for="Body" class="form-control" rows="10"></textarea>
+        <span asp-validation-for="Body" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Send</button>
+    </div>
+</form>

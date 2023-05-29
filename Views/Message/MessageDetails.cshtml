@@ -1,0 +1,41 @@
+﻿@model Message
+@if (User.IsInRole("Admin"))
+{
+    Layout = "~/Views/Shared/_SidebarAdminPartial.cshtml";
+}
+else if (User.IsInRole("Manager"))
+{
+    Layout = "~/Views/Shared/_SidebarManagerPartial.cshtml";
+}
+else if (User.IsInRole("Employee"))
+{
+    Layout = "~/Views/Shared/_SidebarEmployeePartial.cshtml";
+}
+<h2>@Html.DisplayFor(model => model.Subject)</h2>
+
+<p>
+    From: @Html.DisplayFor(model => model.SenderEmail) <br />
+    To: @Html.DisplayFor(model => model.RecipientEmail) <br />
+    Date: @Html.DisplayFor(model => model.SentDate) <br />
+</p>
+
+<p>@Html.DisplayFor(model => model.Body)</p>
+
+<p>
+    @if (Model.IsArchived)
+    {
+        <span class="text-muted">Archived</span>
+    }
+    else if (Model.IsRead)
+    {
+        <span class="text-success">Read</span>
+    }
+    else
+    {
+        <span class="text-warning">Unread</span>
+    }
+</p>
+
+<p>
+    <a asp-action="Archive" asp-route-id="@Model.Id">Archive</a>
+</p>

@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Admin Dashboard";
+
+    Layout = "~/Views/Layouts/_AdminLayout.cshtml";
+}
+
+<h1>Admin Dashboard</h1>
+<hr />
+<div class="d-flex justify-content-between">
+    <a class="btn btn-outline-primary" asp-controller="Role" asp-action="Create">Create Role</a>
+    <a class="btn btn-outline-primary" asp-controller="Role" asp-action="Index">List of Roles</a>
+    <a class="btn btn-outline-primary" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+</div>

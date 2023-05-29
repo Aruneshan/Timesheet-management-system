@@ -1,0 +1,51 @@
+﻿@{
+
+    if (User.IsInRole("Admin"))
+    {
+        Layout = "~/Views/Layouts/_AdminLayout.cshtml";
+    }
+    else if (User.IsInRole("Employee"))
+    {
+        Layout = "~/Views/Layouts/_EmployeeLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Layouts/_ManagerLayout.cshtml";
+    }
+}
+@model Message
+
+<h2>Message Details</h2>
+
+<div>
+    <h4>From: @Model.SenderEmail</h4>
+    <h4>To: @Model.RecipientEmail</h4>
+    <hr />
+    <div>
+        <div class="col-md-2">
+            <b>Subject:</b>
+        </div>
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.Subject)
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div>
+        <div class="col-md-2">
+            <b>Date:</b>
+        </div>
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.SentDate)
+        </div>
+    </div>
+    <hr />
+    <div>
+        <pre>@Html.DisplayFor(model => model.Body)</pre>
+    </div>
+    <hr />
+    <p>
+        <a asp-action="MessageEdit" asp-route-id="@Model.Id">Edit</a> |
+        <a asp-action="MessageIndex">Back to List</a>
+    </p>
+</div>
+

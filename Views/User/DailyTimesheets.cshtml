@@ -1,0 +1,66 @@
+﻿@model IEnumerable<TimeMate.ViewModels.DailyTimesheetViewModel>
+@{
+    ViewData["Title"] = "DailyTimesheets";
+    Layout = "~/Views/Layouts/_EmployeeLayout.cshtml";
+}
+<div>
+    <div class="row">
+        <div class="col-md-6">
+            <a href="@Url.Action("ExportTasks", "User")" class="btn btn-primary">Export Tasks</a>
+        </div>
+        <div class="col-md-6">
+            <form method="post" enctype="multipart/form-data" action="@Url.Action("ImportTasks", "User")">
+                <div class="form-group">
+                    <input type="file" name="importFile" />
+                    <button type="submit" class="btn btn-primary">Import Tasks</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+    <div class="col-md-12">
+    
+        <div class="">
+            <div class="card shadow mb-4 border-left-primary shadow h-100 py-2">
+            
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Timesheets</h6>
+                </div>
+
+                <div class="card-body">
+                    <div class="">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Project Name
+                                        </th>
+                                        <th>Project Description</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.ProjectName</td>
+                                            <td>@item.ProjectDescription</td>
+                                            <td>
+                                                <a style="float:right" asp-action="FillTimeSheet" class="btn btn-outline-primary" asp-route-id="@item.ProjectId">Fill</a>
+                                                <a style="float:right; margin-right:5px" asp-action="ShowTimeSheet" class="btn btn-outline-primary" asp-route-id="@item.ProjectId">Timesheet</a>
+                                                <a style="float:right; margin-right:5px" asp-action="ShowTimeSheetViewOnly" class="btn btn-outline-primary" asp-route-id="@item.ProjectId">Status</a>
+                                                <a onclick="return confirm('Are you sure you wanna request to change this project?');" style="float:right; margin-right:5px" asp-action="RequestToChangeProject" class="btn btn-outline-primary" asp-route-id="@item.ProjectId">Request</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>

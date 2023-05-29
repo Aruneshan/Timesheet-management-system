@@ -1,0 +1,82 @@
+
+<ul class="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" asp-controller="Home" asp-action="Index">
+        <i class="fa fa-home fa-fw"></i>
+        <div class="sidebar-brand-text mx-2">Home</div>
+
+    </a>
+    <hr class="sidebar-divider my-0">
+    <li class="nav-item active">
+        <a class="nav-link" asp-controller="User" asp-action="IndividualDashboard">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+        </a>
+    </li>
+    <hr class="sidebar-divider">
+
+    <div class="sidebar-heading">
+        Interface
+    </div>
+
+
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="User" asp-action="DailyTimesheets">
+            <i class="fa fa-angle-double-right"></i>
+            <span>Timesheets</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="User" asp-action="MessageCreate">
+            <i class="fa fa-solid fa-phone"></i>
+            <span>Communication</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="Goal" asp-action="Create">
+            <i class="fa fa-solid fa-bullseye"></i>
+            <span>Goal</span>
+        </a>
+    </li>
+
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="requestDropdown" role="button" data-bs-toggle="dropdown"
+           aria-expanded="false">
+            <i class="fa fa-solid fa-bullseye"></i>
+            <span>Request</span>
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="requestDropdown">
+            <li>
+                <a class="dropdown-item" asp-controller="User" asp-action="PermissionCreate">
+                    <i class="fa fa-solid fa-bullseye"></i>
+                    <span>Permission Create</span>
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item" asp-controller="Leave" asp-action="Create">
+                    <i class="fa fa-solid fa-bullseye"></i>
+                    <span>Leave Request</span>
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item" asp-controller="Leave" asp-action="Index">
+                    <i class="fa fa-solid fa-bullseye"></i>
+                    <span>Leave Summary</span>
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item" asp-controller="User" asp-action="PermissionIndex">
+                    <i class="fa fa-solid fa-bullseye"></i>
+                    <span>Permission Summary</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+
+    
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+
+</ul>

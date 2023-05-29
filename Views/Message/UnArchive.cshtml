@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Message>
+@if (User.IsInRole("Admin"))
+{
+    Layout = "~/Views/Shared/_SidebarAdminPartial.cshtml";
+}
+else if (User.IsInRole("Manager"))
+{
+    Layout = "~/Views/Shared/_SidebarManagerPartial.cshtml";
+}
+else if (User.IsInRole("Employee"))
+{
+    Layout = "~/Views/Shared/_SidebarEmployeePartial.cshtml";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>From</th>
+            <th>To</th>
+            <th>Subject</th>
+            <th>Date Sent</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var message in Model)
+        {
+            <tr>
+                <td>@message.SenderEmail</td>
+                <td>@message.RecipientEmail</td>
+                <td>@message.Subject</td>
+                <td>@message.SentDate.ToString("MM/dd/yyyy hh:mm tt")</td>
+                <td>
+                    <a asp-action="Archive" asp-route-id="@message.Id">Archive</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

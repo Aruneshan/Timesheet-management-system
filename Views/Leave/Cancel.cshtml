@@ -1,0 +1,51 @@
+﻿@model LeaveRequest
+<div class="card">
+    <div class="card-body">
+        <h2 class="card-title">Cancel Leave Request</h2>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmployeeId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StartDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EndDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Reason)
+                </th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.EmployeeId)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.EndDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Reason)
+                </td>
+                <td>
+                    @using (Html.BeginForm("Cancel", "Leave", new { id = Model.Id }, FormMethod.Post))
+                    {
+                        <div class="form-group">
+                            <label class="control-label">Cancellation Reason:</label>
+                            <div>
+                                @Html.TextAreaFor(model => model.CancellationReason, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Save" class="btn btn-primary" />
+                        </div>
+                    }
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
